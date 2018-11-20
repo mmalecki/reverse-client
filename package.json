@@ -1,0 +1,25 @@
+{
+  "name": "reverse-client",
+  "version": "0.0.0",
+  "description": "An auto-generated HTTP(S) API client for applications built using the `reverse` router",
+  "main": "reverse-client.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reverse",
+    "api",
+    "client"
+  ],
+  "author": "Maciej Małecki <me@mmalecki.com>",
+  "license": "MIT",
+  "dependencies": {
+    "needle": "^2.2.4"
+  },
+  "devDependencies": {
+    "reverse": "^4.0.1"
+  }
+}
