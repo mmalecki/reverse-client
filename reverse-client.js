@@ -7,12 +7,19 @@ const Client = function (router, options) {
   this._router = router
   this._baseUrl = options.baseUrl
   if (!this._baseUrl) throw new Error('A `baseUrl` is required')
+  this._json = !(options.json === false)
   this._validate = options.validate || false
-
 }
 
 Client.prototype._request = function (options) {
-  return needle(options.method, this._baseUrl + options.url)
+  return needle(
+    options.method,
+    this._baseUrl + options.url,
+    options.data,
+    {
+      json: this._json
+    }
+  ).then(resp => resp.body)
 }
 
 module.exports = function (router, url) {
