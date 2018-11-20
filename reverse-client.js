@@ -24,7 +24,7 @@ module.exports = function (router, url) {
         .map((xs, index) => typeof xs === 'string' ? xs : args.shift())
         .join('')
 
-      this._request({
+      return this._request({
         method: target.method,
         url: url,
         data: args.shift()
