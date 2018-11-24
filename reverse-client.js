@@ -22,13 +22,20 @@ Client.prototype._request = function (options) {
   ).then(resp => resp.body)
 }
 
-module.exports = function (router, url) {
-  let client = new Client(router, url)
+module.exports = function (router, options) {
+  let client = new Client(router, options)
 
   router.targets.forEach(target => {
     client[target.name] = function (...args) {
+      function * arg () {
+        const arg = args.shift()
+        if (client._validate && !arg) throw new Error('Not enough arguments')
+        yield arg
+      }
+
+      const args_ = arg()
       const url = target.route
-        .map((xs, index) => typeof xs === 'string' ? xs : args.shift())
+        .map((xs, index) => typeof xs === 'string' ? xs : args_.next().value)
         .join('')
 
       return this._request({
