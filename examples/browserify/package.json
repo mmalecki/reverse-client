@@ -1,6 +1,6 @@
 {
   "name": "@mmalecki/reverse-client-browserify-example",
   "dependencies": {
-    "ecstatic": "^3.3.0"
+    "ecstatic": "^3.3.2"
   }
 }
