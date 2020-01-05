@@ -9,6 +9,7 @@ const Client = function (router, options) {
   if (!this._baseUrl) throw new Error('A `baseUrl` is required')
   this._json = !(options.json === false)
   this._validate = options.validate || false
+  this._headers = options.headers || {}
 }
 
 Client.prototype._request = function (options) {
@@ -17,7 +18,8 @@ Client.prototype._request = function (options) {
     this._baseUrl + options.url,
     options.data,
     {
-      json: this._json
+      json: this._json,
+      headers: { ...(options.headers || {}), ...this._headers }
     }
   ).then(resp => resp.body)
 }
