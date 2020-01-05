@@ -1,6 +1,6 @@
 {
   "name": "reverse-client",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An auto-generated HTTP(S) API client for applications built using the `reverse` router",
   "main": "reverse-client.js",
   "directories": {
